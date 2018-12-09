@@ -2,7 +2,6 @@
 
 toolsArray=(iperf fio)
 
-#cephNodes=(10.8.0.1 10.8.0.2 10.8.0.3)
 cephNodes=(cephnode01 cephnode02 cephnode03)
 
 for node in ${cephNodes[*]}
