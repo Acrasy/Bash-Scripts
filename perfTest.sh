@@ -42,11 +42,13 @@ do
 
 		fio --output fioOf${node}.txt --numjobs=10 --size=10GB --bs=4k --iodepth=1 --rw=randwrite --direct=0 --ioengine=libaio --group_reporting --name=randomwrite
 		echo fioOf${node}.txt >> perfOF${node}.txt
-		scp ./perfOf${node}.txt root@10.8.0.10:~/perfOf${node}.txt
-		rm fioOf${node}.txt
-		rm perfOF${node}.txt
-		rm randomwrite*
 EOF	
+	#copy from to cephmon
+	scp root@10.8.0.1:~/perfOf${node}.txt ~/perfOf${node}.txt
+#	rm fioOf${node}.txt
+#	rm perfOF${node}.txt
+#	rm randomwrite*
+
 	#copy report to summary file after every node
 	cat perfOf${node}.txt >> summary.txt
 done
